@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #111;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    font-size: 4rem;
+    color: white;
+    position: relative;
+    animation: glitch 1s infinite;
+}
+
+h1::before, h1::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    color: white;
+    background-color: black;
+    overflow: hidden;
+    clip: rect(0, 990px, 0, 0); /* 右位置だけ990pxと一部隠してGLICTH*/
+    animation: glitch 1.5s infinite;
+}
+
+/* 　
+　　　ここがキモ 
+　　　オフセットで微妙に横にズレしてるのが崩れるように見える
+　　　これがないとただShadowoがつくだけに
+
+　　　Text内容は上のcontentで指定されている
+*/
+h1::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation-duration: 1s;
+}
+
+h1::after {
+    left: -2px;
+    text-shadow: -2px 0 blu3;
+    animation-duration: 1.2s;
+}  
+
+/* clipでテキストを隠したり、skeyで微妙に傾けるアニメーション */
+@keyframes glitch {
+    0% {
+        clip: rect(42px, 9999px, 44px ,0);
+        transform: skew(0.4deg);
+    }
+    20% {
+        clip: rect(15px, 9999px, 56px ,0);
+        transform: skew(0.3deg);
+    }
+    40% {
+        clip: rect(85px, 9999px, 140px ,0);
+        transform: skew(0.5deg);
+    }
+    60% {
+        clip: rect(35px, 9999px, 90px ,0);
+        transform: skew(0.6deg);
+    }
+    80% {
+        clip: rect(42px, 9999px, 44px ,0);
+        transform: skew(0.4deg);
+    }
+    100% {
+        clip: rect(15px, 9999px, 56px ,0);
+        transform: skew(0.3deg);
+    }
+}
