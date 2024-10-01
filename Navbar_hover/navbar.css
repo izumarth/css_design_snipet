@@ -1,0 +1,51 @@
+ul {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); /* translateで左上に動かして正確に中央寄せする*/
+    display: flex;
+}
+
+ul li {
+    list-style: none;/* 黒丸除去 */
+}
+
+ul li a {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    margin: 20px 0;
+    padding: 10px 20px;
+    text-decoration: none; /* 下線削除 */
+    color: #262626;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.5s; /* hover への変化秒数*/
+    z-index: 1;
+}
+
+
+ul li a:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    transform: scale(1.5); /*　一瞬大きくなるというアニメーション倍率 */
+    opacity: 0; /*　 初期状態は非表示 */
+    transition: 0.3s;
+    z-index: -1; /* 文字背景 */
+}
+
+ul li a:hover {
+    color: #fff;
+}
+
+
+ul li a:hover:after {
+    transform: scaleY(1); /*　アニメーション完了後の状態 */
+    opacity: 1; /*　 hover時だけ表示させる */
+}
