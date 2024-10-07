@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+
+    border: solid 6px #a423fa;
+    border-radius: 50%;
+    border-top-color: transparent; /*  上１/4を消す */
+    border-bottom-color: transparent; /*  下１/4を消す */
+
+    animation: spin 1s infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    50% { transform: rotate(180deg) scale(1.2);} /*  ここまでだと半回転して戻る */
+    100% { transform: rotate(360deg);} 
+}
