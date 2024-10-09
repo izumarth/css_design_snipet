@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group-4 {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.textbox-4 {
+    width: 275px;
+    height: 50px;
+    border: 2px solid #0c48fa;
+    font-size: 14px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    background: #ffffff;
+    outline: none; /* outlineが表示されると移動後に若干暗くなる */
+}
+
+.form-label-4 {
+    position: absolute;  /* placeholderがabsoluteにすることでinput-fieldに被せられる */
+    top: 30%;
+    left: 2rem; /* この３つで初期値決定 */
+    font-size: 16px;
+    transition: all .25s linear; /* 上部に移動するまで時間と遷移方法(linear) */
+    pointer-events: none; /* これがないとplaceholderを押下した際に入力できない */
+}
+
+ /*
+  1. textbox-4が選択されている場合に　form-label-4のCSSを変更
+  2. textbox-4が選択されていないが有効な場合合に　form-label-4のCSSを変更
+ */
+.textbox-4:focus~.form-label-4,
+.textbox-4:not(:focus):valid~.form-label-4 {
+    top: -20%;
+    left: 1rem; /* 移動後の位置を決定 */
+    font-size: 17px;
+    padding: 0 .3rem;
+    background-color: white; /* これがいないとテキストフィールドの線が透けてしまう */
+}
