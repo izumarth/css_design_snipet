@@ -1,0 +1,24 @@
+.shimmer {
+    width: 300px;
+    height: 100px;
+    /* 
+        90degなので左から右に向けて
+        ０，４０,50.. と細かく分けることで滑らかなアニメーションに
+     */
+    background-image: linear-gradient(
+        90deg,
+        #EEEEEE 0%, #EEEEEE 40%,
+        #DDDDDD 50%, #DDDDDD 55%,
+        #EEEEEE 65%, #EEEEEE 100%
+    ); 
+    background-size: 400%;
+    animation: shimmer 1500ms infinite;
+}
+
+/* 
+    background-imageが右下から左上に移動することによってshimmerを表現している
+*/
+@keyframes shimmer {
+    from { background-position: 100% 100%; }
+    to { background-position: 0 0; }
+}
